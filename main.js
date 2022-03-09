@@ -48,12 +48,12 @@ const deleteIssue = (index) => {
 
   const issues = JSON.parse(localStorage.getItem('issues'));
 
-  issues.pop(issues[index])
-
+  issues.splice(index, 1)
   // console.log(issues);
   // console.log(issues[index]);
 
   localStorage.setItem('issues', JSON.stringify(issues))
+  fetchIssues();
 
 
 
@@ -95,7 +95,7 @@ const fetchIssues = () => {
                               <p><span class="glyphicon glyphicon-time"></span> ${severity}</p>
                               <p><span class="glyphicon glyphicon-user"></span> ${assignedTo}</p>
                               <a href="#" onclick="closeIssue(${id})" class="btn btn-warning">Close</a>
-                              <a href="#" onclick="deleteIssue(${id},${i})" class="btn btn-danger">Delete</a>
+                              <a href="#" onclick="deleteIssue(${i})" class="btn btn-danger">Delete</a>
                               </div>`;
     }
 
@@ -109,7 +109,7 @@ const fetchIssues = () => {
                               <p><span class="glyphicon glyphicon-time"></span> ${severity}</p>
                               <p><span class="glyphicon glyphicon-user"></span> ${assignedTo}</p>
                               <a href="#" onclick="closeIssue(${id})" class="btn btn-warning">Close</a>
-                              <a href="#" onclick="deleteIssue(${i},${i})" class="btn btn-danger">Delete</a>
+                              <a href="#" onclick="deleteIssue(${i})" class="btn btn-danger">Delete</a>
                               </div>`;
     }
 
